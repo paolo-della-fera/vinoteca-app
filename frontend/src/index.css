@@ -39,6 +39,7 @@ body {
 
 /* #endregion Footer */
 
+
 /* #region Hero Banner */
 .hero-banner {
     background-image: url('./assets/banner.png');
@@ -74,12 +75,14 @@ body {
         padding: 30px 20px;
         text-align: center;
     }
+
     .hero-banner::before {
         background: rgba(36, 22, 17, 0.7);
     }
 }
 
 /* #endregion Hero Banner */
+
 
 /* #region Stile Card */
 .wine-card {
@@ -298,4 +301,5 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--bordeaux);
 }
+
 /* #endregion Scrollbar */
