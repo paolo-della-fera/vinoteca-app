@@ -20,12 +20,16 @@ function Compare() {
     // Funzione per recuperare i dettagli dei vini selezionati per il confronto dall'API
     const fetchComparedWines = async () => {
         try {
-            // Effettua richieste parallele per recuperare i dettagli dei vini selezionati
+            // Primo Promise.all: lancia le fetch in parallelo (non in sequenza, così è più veloce)
+            // e aspetta che finiscano tutte, restituendo un array di Response
             const responses = await Promise.all(
+                // Mappa la lista di confronto (compareList) e crea una fetch per ogni ID di vino 
                 compareList.map(id => fetch(`${API_URL}/wines/${id}`))
             )
-            // Converte le risposte in formato JSON e aggiorna lo stato con i dettagli dei vini
+            // Secondo Promise.all: serve perché anche .json() è asincrona,
+            // quindi mappando le Response ottengo un altro array di Promise da aspettare
             const data = await Promise.all(responses.map(res => res.json()))
+            // Aggiorna lo stato con i dettagli dei vini selezionati per il confronto
             setComparedWines(data.map(d => d.wine))
         } catch (error) {
             console.error(error)

@@ -21,14 +21,20 @@ function WineList() {
     const filteredWines = useMemo(() => {
 
         return wines
+            // Ricerca case-insensitive sul titolo + filtro per categoria
             .filter(w =>
+                // Ricerca case-insensitive sul titolo e filtro per categoria
                 w.title.toLowerCase().includes(searchWine.toLowerCase()) &&
+                // Filtro per categoria (se selezionata)
                 (!selectedCategory || w.category === selectedCategory)
             )
+            // Ordina per categoria (ordine custom) o per titolo; sortWine (1/-1) inverte l'ordine
             .sort((a, b) => {
                 if (sortBy === 'category') {
+                    // Ordina per categoria in base all'ordine definito in categoryOrder
                     return (categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category)) * sortWine
                 }
+                // Ordina per titolo in ordine alfabetico
                 return a.title.localeCompare(b.title) * sortWine
             })
 
@@ -136,7 +142,7 @@ function WineList() {
                     )}
 
                     {/* Messaggio se non ci sono risultati */}
-                    {!error &&filteredWines.length === 0 && (
+                    {!error && filteredWines.length === 0 && (
                         <h4 className="text-center font-mono w-100 mt-4" style={{ color: 'var(--ottone)' }}>
                             Questa etichetta non è ancora in cantina!
                         </h4>

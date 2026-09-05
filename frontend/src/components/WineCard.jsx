@@ -37,18 +37,22 @@ const WineCard = ({ wine }) => {
                     <button
                         className="wine-card-favorite"
                         onClick={(e) => {
+                            // Impedisce la navigazione al click del pulsante e gestisce l'aggiunta/rimozione dai preferiti
                             e.preventDefault()
                             toggleFavorite(wine.id)
                         }}
                     >
+                        {/* Uso l'operatore ternario per determinare quale icona mostrare */}
                         <i className={isFavorite ? "bi bi-heart-fill" : "bi bi-heart"}></i>
                     </button>
 
                     {/* Pulsante per aggiungere/rimuovere dal confronto */}
                     <button
                         className="wine-card-compare"
+                        // Cambia il colore del pulsante in base al fatto che il vino sia nella lista di confronto o meno
                         style={{ color: isCompare ? 'var(--ottone)' : 'var(--bordeaux)' }}
                         onClick={(e) => {
+                            // Impedisce la navigazione al click del pulsante e gestisce l'aggiunta/rimozione dalla lista di confronto
                             e.preventDefault()
                             toggleCompare(wine.id)
                         }}

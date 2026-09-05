@@ -1,5 +1,7 @@
 import { createContext, useContext } from "react";
 
+// Custom hooks importati QUI una volta per essere utilizzati nel contesto globale
+// Unico stato condiviso tra i componenti, evitando di doverli importare in ogni componente separatamente
 import useWines from "../hooks/useWines";
 import useFavorites from "../hooks/useFavorites"
 import useCompare from "../hooks/useCompare";
