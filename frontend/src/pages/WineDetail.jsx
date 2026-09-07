@@ -27,6 +27,7 @@ function WineDetail() {
 
             // Se la risposta non è ok (es. id inesistente), segna il vino come non trovato
             if (!response.ok) {
+                // Segna il vino come non trovato
                 setNotFound(true)
                 return
             }
